@@ -25,15 +25,30 @@
         font-size: 10vw;
         color: black;
         margin: 0;
-        position: relative;
-        top: 50%;
+        position:inherit;
         display: flex; /* establish flex container */
         justify-content: center; /* center flex items horizontally, in this case */
 
-        left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
+
+    .container {
+        margin-left: 50%;
+        margin-top: 10%;
+        top: 50%;
+        left: 50%;
+        width: fit-content;
+        height: fit-content;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+    } 
 
     .fade {
         position: fixed;
@@ -53,10 +68,17 @@
 <header>
     <div class="fade" tabindex="-1" id="fade"></div>
 
-    <div class="container" >
-        <div class="body" align="center"> TATGG </div>
-        <button class="body" align="center" onclick="fadeToPage('cfp')">CFP Web Edition</button>
-        <button class="body" align="center" onclick="fadeToPage('cfp/privacy')">CFP Privacy Policy</button>
+    <div class="container">
+        <div class="body" style="font-size: 100;"> TATGG </div>
+    </div>
+    <div class="container">
+        <button class="body" onclick="fadeToPage('cfp')">CFP Web Edition</button>
+    </div>
+    <div class="container">
+        <button class="body" onclick="fadeToPage('cfp/privacy')">CFP Privacy Policy</button>
+    </div>
+    <div class="container">
+        <button class="body" onclick="fadeToPage('cfp/stores')">CFP in stores</button>
     </div>
 </header>
 
