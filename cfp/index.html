@@ -145,6 +145,12 @@
 </body>
 
 <script>
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            document.getElementById("fade").style.opacity = (0, 0, 0, 0);
+        }
+    };
+  
   window.requestAnimationFrame(step);
   let alreadyFading = false;
 
