@@ -1,9 +1,12 @@
-## Hi there 👋
+## Hi
 
 I'm a indie game dev
 i made games on steam and google play and soon apple
 yeah
 pretty cool ig
+
+
+## if youre reading this why
 
 <!--
 **TheseAreTheGoodGames/TheseAreTheGoodGames** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
