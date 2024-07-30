@@ -29,6 +29,12 @@ Check the data safety on the store listing for more information, or e-mail these
 </body>
 
 <script>
+      window.onpageshow = function(event) {
+        if (event.persisted) {
+            document.getElementById("fade").style.opacity = (0, 0, 0, 0);
+        }
+    };
+  
     window.requestAnimationFrame(stepOut);
 
     let newOpacity = 1;
