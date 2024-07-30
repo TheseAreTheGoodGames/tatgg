@@ -59,17 +59,18 @@
 
 
 <script>
+    let newOpacity = 1;
+    
     window.onpageshow = function(event) {
         if (event.persisted) {
             document.getElementById("fade").style.opacity = (0, 0, 0, 0);
+            newOpacity = 0;
         }
     };
 
     let link;
     
     window.requestAnimationFrame(stepOut);
-
-    let newOpacity = 1;
 
     function stepOut() {
         newOpacity -= 0.05;
