@@ -1,3 +1,44 @@
-We, These Are The Good Games, do not collect data in any way. However, when on online mode, Photon (https://www.photonengine.com) takes your cursor or previous finger position to show to other users in that “room.” See more on their website.
+<head>
+  <title>Privacy Policy - CFP</title>
+</head>
 
+<style>
+  .fade {
+        position: fixed;
+        left: -100%;
+        top: -100%;
+        width: 100%;
+        height: 100%;
+        border: 1000000px solid rgba(0, 0, 0);
+        opacity: 0;
+        padding: 10px;
+        margin: 10px;
+        z-index: 1000;
+        pointer-events: none;
+    }
+</style>
+
+<header>
+  <div class="fade" tabindex="-1" id="fade"></div>
+</header>
+
+<body>
+We, These Are The Good Games, do not collect data in any way. However, when on online mode, Photon (https://www.photonengine.com) takes your cursor or previous finger position to show to other users in that “room.” See more on their website.
 Check the data safety on the store listing for more information, or e-mail thesearethegoodgames@gmail.com for help.
+</body>
+
+<script>
+    window.requestAnimationFrame(stepOut);
+
+    let newOpacity = 1;
+
+    function stepOut() {
+        newOpacity -= 0.05;
+        document.getElementById("fade").style.opacity = (0, 0, 0, newOpacity);
+
+        if (newOpacity >= 0)
+        {
+            window.requestAnimationFrame(stepOut);
+        }
+    }
+</script>
