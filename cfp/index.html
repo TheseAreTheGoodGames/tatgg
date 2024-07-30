@@ -12,8 +12,100 @@
     rel="stylesheet"
     type="text/css"
   />
-  <link rel="stylesheet" type="text/css" href="main.css" />
 </head>
+
+<style>
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  h2 {
+    position: absolute;
+    top: -1%;
+    left: -43.7%;
+    width: 100%;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 5vw;
+    color: white;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  }
+
+  .button {
+    outline: none;
+    border: none;
+    width: 25%;
+    height: width;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
+    image-rendering: optimizeSpeed; /* STOP SMOOTHING, GIVE ME SPEED  */
+    image-rendering: -moz-crisp-edges; /* Firefox                        */
+    image-rendering: -o-crisp-edges; /* Opera                          */
+    image-rendering: -webkit-optimize-contrast; /* Chrome (and eventually Safari) */
+    image-rendering: pixelated; /* Universal support since 2021   */
+    image-rendering: optimize-contrast; /* CSS3 Proposed                  */
+    -ms-interpolation-mode: nearest-neighbor; /* IE8+   */
+  }
+
+  .points {
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 10vw;
+    color: white;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  }
+
+  .fade {
+    position: fixed;
+    left: -100%;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    border: 1000000px solid rgba(0, 0, 0);
+    opacity: 1;
+    padding: 10px;
+    margin: 10px;
+    z-index: 1000;
+    pointer-events: none;
+  }
+</style>
 
 <body>
   <div class="fade" tabindex="-1" id="fade"></div>
@@ -50,5 +142,127 @@
     />
     <div class="points" id="points" tabindex="-1">0</div>
   </div>
-  <script type="text/javascript" src="main.js"></script>
 </body>
+
+<script>
+  window.requestAnimationFrame(step);
+  let alreadyFading = false;
+
+  let newOpacity = 1;
+  function step() {
+    newOpacity -= 0.05;
+    document.getElementById("fade").style.opacity = (0, 0, 0, newOpacity);
+
+    document.getElementById("button").ondragstart = function () {
+      return false;
+    };
+
+    document.getElementById("backButton").ondragstart = function () {
+      return false;
+    };
+
+    window.requestAnimationFrame(step);
+  }
+
+  let mouseDown = false;
+  let backMouseDown = false;
+
+  let pointsText = document.getElementById("points");
+  let buttonImage = document.getElementById("button");
+  let backButtonImage = document.getElementById("backButton");
+
+  let notClicked =
+    "https://cdn.glitch.global/feac0236-fb39-4a57-a3e5-1a988e2a38e6/Not%20Clicked.png?v=1716070731664";
+  let clicked =
+    "https://cdn.glitch.global/feac0236-fb39-4a57-a3e5-1a988e2a38e6/Clicked.png?v=1716070724808";
+
+  document.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+      SpaceClick();
+    } else if (event.code === "Escape") {
+      EscapeClick();
+    }
+  });
+
+  document.addEventListener("keyup", (event) => {
+    if (event.code === "Space") {
+      GivePoints();
+    } else if (event.code === "Escape") {
+      backButtonImage.src = notClicked;
+      newOpacity = 0;
+      window.requestAnimationFrame(stepIn);
+    }
+  });
+
+  window.addEventListener("mouseup", (event) => {
+    UnClick();
+  });
+
+  window.onload = function () {
+    document.body.style.background = "#00ffff";
+    if (localStorage.getItem("Points") == null) {
+      localStorage.setItem("Points", 0);
+      fadeOut();
+    }
+
+    pointsText.innerHTML = localStorage.getItem("Points");
+    document.title = localStorage.getItem("Points") + " - CFP";
+  };
+
+  function BackClick() {
+    backMouseDown = true;
+    backButtonImage.src = clicked;
+  }
+
+  function Click() {
+    mouseDown = true;
+    buttonImage.src = clicked;
+  }
+
+  function SpaceClick() {
+    buttonImage.src = clicked;
+  }
+
+  function EscapeClick() {
+    backButtonImage.src = clicked;
+  }
+
+  function stepIn(timeStamp) {
+    newOpacity += 0.1;
+    document.getElementById("fade").style.opacity = (0, 0, 0, newOpacity);
+
+    if (newOpacity <= 2) {
+      window.requestAnimationFrame(stepIn);
+    } else {
+      window.open("/", "_self");
+    }
+  }
+
+  function UnClick() {
+    if (backMouseDown) {
+      if (!alreadyFading) {
+        alreadyFading = true;
+        backMouseDown = false;
+        backButtonImage.src = notClicked;
+        newOpacity = 0;
+        window.requestAnimationFrame(stepIn);
+      }
+    }
+    if (mouseDown) {
+      mouseDown = false;
+      GivePoints();
+    }
+  }
+
+  function GivePoints() {
+    points = parseFloat(localStorage.getItem("Points"));
+    localStorage.setItem("Points", (points = points + 1));
+    points = parseFloat(localStorage.getItem("Points"));
+    pointsText.innerHTML = points;
+
+    let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    document.body.style.background = randomColor;
+    document.title = points + " - CFP";
+    if (!mouseDown) buttonImage.src = notClicked;
+  }
+</script>
