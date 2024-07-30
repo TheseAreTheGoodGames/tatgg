@@ -145,16 +145,18 @@
 </body>
 
 <script>
+  let newOpacity = 1;
+  
     window.onpageshow = function(event) {
         if (event.persisted) {
             document.getElementById("fade").style.opacity = (0, 0, 0, 0);
+            newOpacity = 0;
         }
     };
   
   window.requestAnimationFrame(step);
   let alreadyFading = false;
 
-  let newOpacity = 1;
   function step() {
     newOpacity -= 0.05;
     document.getElementById("fade").style.opacity = (0, 0, 0, newOpacity);
