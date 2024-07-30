@@ -35,15 +35,6 @@
         transform: translate(-50%, -50%);
     }
 
-    .toolbar {
-        position: relative;
-        top: 0;
-        width: 100%;
-        display: flex; /* establish flex container */
-        justify-content: center; /* center flex items horizontally, in this case */
-        align-items: center; /* center flex items vertically, in this case */
-    }
-
     .fade {
         position: fixed;
         left: -100%;
@@ -61,8 +52,9 @@
 
 <header>
     <div class="fade" tabindex="-1" id="fade"></div>
-    <button class="toolbar" onclick="fadeToPage('cfp')">CFP Web Edition</button>
-    <button class="toolbar" onclick="fadeToPage('cfp/privacy')">CFP Privacy Policy</button>
+    <div class="body"> TATGG </div>
+    <button class="body" onclick="fadeToPage('cfp')">CFP Web Edition</button>
+    <button class="body" onclick="fadeToPage('cfp/privacy')">CFP Privacy Policy</button>
 </header>
 
 
