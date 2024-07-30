@@ -48,13 +48,27 @@
         z-index: 1000;
         pointer-events: none;
     }
+
+    .container {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+    
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+    }
 </style>
 
 <header>
     <div class="fade" tabindex="-1" id="fade"></div>
-    <div class="body" align="center"> TATGG </div>
-    <button class="body" align="center" onclick="fadeToPage('cfp')">CFP Web Edition</button>
-    <button class="body" align="center" onclick="fadeToPage('cfp/privacy')">CFP Privacy Policy</button>
+
+    <div class="container" >
+        <div class="body" align="center"> TATGG </div>
+        <button class="body" align="center" onclick="fadeToPage('cfp')">CFP Web Edition</button>
+        <button class="body" align="center" onclick="fadeToPage('cfp/privacy')">CFP Privacy Policy</button>
+    </div>
 </header>
 
 
