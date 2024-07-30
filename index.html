@@ -61,11 +61,14 @@
 
 <header>
     <div class="fade" tabindex="-1" id="fade"></div>
-    <button class="toolbar" onclick="fadeToPage()">CFP</button>
+    <button class="toolbar" onclick="fadeToPage('cfp')">CFP</button>
+    <button class="toolbar" onclick="fadeToPage('cfp/privacy')">CFP</button>
 </header>
 
 
 <script>
+    let link;
+    
     window.requestAnimationFrame(stepOut);
 
     let newOpacity = 1;
@@ -80,8 +83,9 @@
         }
     }
     
-    function fadeToPage()
+    function fadeToPage(newLink)
     {
+        link = newLink;
         window.requestAnimationFrame(stepIn);
     }
 
@@ -96,7 +100,7 @@
         }
         else
         {
-            window.open("/cfp", "_self");
+            window.open("/" + link, "_self");
         }
     }
 </script>
