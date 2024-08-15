@@ -4,7 +4,6 @@
         const lowerCaseURL = currentURL.toLowerCase();
         
         document.getElementById("current").innerHTML = "Current page: " + currentURL;
-        document.getElementById("lower").innerHTML = "Lowercased page: " + lowerCaseURL;
 
         if (currentURL != lowerCaseURL) {
             location.replace(lowerCaseURL);
