@@ -2,8 +2,8 @@
     window.onload = () => {
         currentURL = window.location.href;
         lowerCaseURL = currentURL.toLowerCase();
-      
-        else if (currentURL != lowerCaseURL) {
+        
+        if (currentURL != lowerCaseURL) {
             location.replace(lowerCaseURL);
         }
     };
@@ -12,3 +12,5 @@
 <big><big><big><big><big><big><big>404</big></big></big></big></big></big></big>
 <br>
 uh oh :(
+<div id=current></div>
+<div id=lower></div>
